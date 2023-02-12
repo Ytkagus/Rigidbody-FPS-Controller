@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Bar : MonoBehaviour
+public class HealfBar : MonoBehaviour
 
 {
     [SerializeField] private DilationTimer dilationTimer;
