@@ -12,15 +12,19 @@ public class Gun1 : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
 
-    public Camera fpsCam;
-
     private float nextTimeToFire = 0f;
+
+    public GameObject bullet;
+    public Transform barrelPivot;
+    public float shootingSpeed = 1;
+    public GameObject muzzleFlash;
 
     public Animator animator;
 
     void Start()
     {
         currentAmmo = maxAmmo;
+        muzzleFlash.SetActive(false);
     }
 
     void OnEnable()
@@ -67,16 +71,8 @@ public class Gun1 : MonoBehaviour
     {
         currentAmmo--;
 
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) 
-        {
-            Debug.Log(hit.transform.name);
-
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
-        }
+        Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
+        bulletrb.velocity = barrelPivot.forward * shootingSpeed;
+        muzzleFlash.SetActive(true);
     }
 }
