@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun3 : MonoBehaviour
@@ -20,6 +19,8 @@ public class Gun3 : MonoBehaviour
     private LayerMask Mask;
     [SerializeField]
     private float BounceDistance = 10f;
+    [SerializeField]
+    private bool BouncingBullets;
 
     private float LastShootTime;
 
@@ -60,5 +61,40 @@ public class Gun3 : MonoBehaviour
 
             yield return null;
         }
+
+        Trail.transform.position = HitPoint;
+
+        if (MadeImpact)
+        {
+            Instantiate(ImpactParticleSystem, HitPoint, Quaternion.LookRotation(HitNormal));
+
+            if (BouncingBullets && BounceDistance > 0)
+            {
+                Vector3 bounceDirection = Vector3.Reflect(direction, HitNormal);
+
+                if (Physics.Raycast(HitPoint, bounceDirection, out RaycastHit hit, BounceDistance, Mask))
+                {
+                    yield return StartCoroutine(SpawnTrail(
+                        Trail,
+                        hit.point,
+                        hit.normal,
+                        BounceDistance - Vector3.Distance(hit.point, HitPoint),
+                        true
+                    ));
+                }
+                else
+                {
+                    yield return StartCoroutine(SpawnTrail(
+                        Trail,
+                        bounceDirection * BounceDistance,
+                        Vector3.zero,
+                        0,
+                        false
+                    ));
+                }
+            }
+        }
+
+        Destroy(Trail.gameObject, Trail.time);
     }
 }
