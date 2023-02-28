@@ -24,6 +24,16 @@ public class Gun3 : MonoBehaviour
 
     private float LastShootTime;
 
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            
+            Shoot();
+        }
+    }
+
     public void Shoot()
     {
         if (LastShootTime + ShootDelay < Time.time)
