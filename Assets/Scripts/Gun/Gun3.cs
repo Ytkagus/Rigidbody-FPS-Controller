@@ -29,7 +29,6 @@ public class Gun3 : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            
             Shoot();
         }
     }
