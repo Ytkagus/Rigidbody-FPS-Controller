@@ -22,11 +22,12 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    private void Awake()
+    private void Start()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = Player.instanse.transform;
         agent = GetComponent<NavMeshAgent>();
     }
+    
 
     private void Update()
     {
@@ -81,7 +82,7 @@ public class EnemyAI : MonoBehaviour
             ///Attack code
             Rigidbody rb = Instantiate(projectitle, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
             ///
 
             alreadyAttacked = true;
