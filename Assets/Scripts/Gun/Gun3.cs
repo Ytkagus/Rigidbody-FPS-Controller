@@ -23,6 +23,7 @@ public class Gun3 : MonoBehaviour
     private bool BouncingBullets;
 
     private float LastShootTime;
+    public AudioSource audioSource;
 
 
     private void Update()
@@ -52,6 +53,7 @@ public class Gun3 : MonoBehaviour
             }
 
             LastShootTime = Time.time;
+            audioSource.Play();
         }
     }
 

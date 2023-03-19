@@ -22,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public float LastShootTime = 0.4f;
+
     private void Start()
     {
         player = Player.instanse.transform;
