@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8522130268965831254}
   - component: {fileID: -7363138979615005842}
   - component: {fileID: 822405668817238305}
+  - component: {fileID: 3149098839437126805}
   m_Layer: 0
   m_Name: SM_Wep_Grenade_HE_01
   m_TagString: Untagged
@@ -225,6 +226,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.102149926, y: 0.18532325, z: 0.10214965}
   m_Center: {x: 0, y: 0.006008379, z: 0.00000007636845}
+--- !u!114 &3149098839437126805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067644766876304331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dcd38f7e30a6341baf879a8112a4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!1 &2067804394842757717
 GameObject:
   m_ObjectHideFlags: 0
