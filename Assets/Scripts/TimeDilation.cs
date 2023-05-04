@@ -9,7 +9,7 @@ public class TimeDilation : MonoBehaviour
     [SerializeField] private DilationTimer dilationTimer;
 
     private void Update()
-    {
+    { 
         if (Input.GetKey(KeyCode.E)&& dilationTimer.CanRunTimer())
         {
             dilationTimer.timerStart = true;
@@ -23,6 +23,4 @@ public class TimeDilation : MonoBehaviour
             fovSelector.onTimeStop = false;
         }
     }
-
-    
 }

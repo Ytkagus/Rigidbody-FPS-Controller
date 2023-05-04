@@ -5,8 +5,14 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public static PauseMenu instanse;
     public GameObject pauseMenuUI;
-     void Update()
+
+    private void Awake()
+    {
+        instanse = this;
+    }
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -30,6 +36,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        Debug.Log("gamepause");
         GameIsPaused = true;
     }
 }
